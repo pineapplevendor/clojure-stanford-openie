@@ -1,6 +1,6 @@
 (defproject clojure-stanford-openie "0.1.0"
   :description "Wrap Stanford's OpenIE in Clojure"
-  :url "truecomputergenius.com"
+  :url "https://github.com/pineapplevendor/clojure-stanford-openie"
   :dependencies [[org.clojure/clojure "1.10.0"]
                  [edu.stanford.nlp/stanford-corenlp "3.8.0"]
                  [edu.stanford.nlp/stanford-corenlp "3.8.0" :classifier "models"]
