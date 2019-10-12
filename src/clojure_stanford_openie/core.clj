@@ -34,6 +34,8 @@
 
 (defn get-relations
   [pipeline text]
-  (map get-sentence-relations
-       (get-sentence-relation-triples (get-sentences (process-text pipeline text)))))
+  (->> (process-text pipeline text)
+      (get-sentences)
+      (get-sentence-relation-triples)
+      (map get-sentence-relations)))
 
