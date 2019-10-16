@@ -18,24 +18,24 @@
   [text]
   (.get text CoreAnnotations$SentencesAnnotation))
 
-(defn- get-sentence-relation-triples
+(defn- get-sentence-annotations
   [sentence]
-  (map #(.get % NaturalLogicAnnotations$RelationTriplesAnnotation) sentence))
+  (.get sentence NaturalLogicAnnotations$RelationTriplesAnnotation))
 
-(defn- relation-triple-to-relation
-  [relation-triple]
-  {:subject (.subjectGloss relation-triple)
-   :relation (.relationGloss relation-triple)
-   :object (.objectGloss relation-triple)})
+(defn- relation-annotation-to-relation
+  [annotation]
+  {:subject (.subjectGloss annotation)
+   :relation (.relationGloss annotation)
+   :object (.objectGloss annotation)})
 
-(defn- get-sentence-relations
-  [sentence-relation-triples]
-  (map relation-triple-to-relation sentence-relation-triples))
+(defn- get-sentence-to-relations
+  [sentence]
+  {:sentence (.toString sentence)
+   :relations (map relation-annotation-to-relation (get-sentence-annotations sentence))})
 
 (defn get-relations
   [pipeline text]
   (->> (process-text pipeline text)
-      (get-sentences)
-      (get-sentence-relation-triples)
-      (map get-sentence-relations)))
+       (get-sentences)
+       (map get-sentence-to-relations)))
 

@@ -1,4 +1,4 @@
-(defproject clojure-stanford-openie "0.1.0"
+(defproject clojure-stanford-openie "1.0.0"
   :description "Wrap Stanford's OpenIE in Clojure"
   :url "https://github.com/pineapplevendor/clojure-stanford-openie"
   :dependencies [[org.clojure/clojure "1.10.0"]
